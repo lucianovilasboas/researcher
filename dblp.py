@@ -203,4 +203,12 @@ def get_top_first_authors(df,top=100):
     authors_top_ = [f[0] for f in frequency.most_common(top)]
 
     return authors_top_
-    
+
+def filter_by_type(df, filter_type=""):
+    """
+        Filtra os artigos pelo tipo usando o critério filter_type
+    """
+    if filter_type: 
+        return df[ df['type_'].str.contains(filter_type) ]
+    else:
+        return df
