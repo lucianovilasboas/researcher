@@ -191,9 +191,16 @@ def plot_top_authors(df,top=20):
     df2 = pd.DataFrame({"# Publications":freq}, index=index)
     ax = df2.plot.barh(rot=0)
 
-def get_first_authors(df):
+def get_top_first_authors(df,top=100):
     """
-        Lista os primeiros autores em um dataframe de artigos
+        Lista os top primeiros autores em um dataframe de artigos
     """
-    pass
+    autores = []
+    for authors in df['authors']:
+        autores.append(authors[0])
+        
+    frequency = Counter(autores)
+    authors_top_ = [f[0] for f in frequency.most_common(top)]
+
+    return authors_top_
     
